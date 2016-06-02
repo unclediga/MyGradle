@@ -43,3 +43,16 @@ jar {
 task(hello) << {
   println "Hello from my task"
 }  
+
+
+task fatJar(type: Jar){
+  manifest{
+    attributes 'Main-Class':'org.unclediga.Talker'
+  }
+  from {
+    configurations.compile.collect {
+      it.isDirectory() ? it : zipTree(it)
+    }
+  }
+  with jar
+}
