@@ -38,3 +38,8 @@ jar {
     attributes 'Main-Class':'org.unclediga.Talker'
   }
 }
+
+
+task(hello) << {
+  println "Hello from my task"
+}  
